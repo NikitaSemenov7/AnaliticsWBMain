@@ -1,0 +1,81 @@
+{
+  "report": [
+    {
+      "cityName": "Благовещенск",
+      "countryName": "Россия",
+      "foName": "Дальневосточный федеральный округ",
+      "nmID": 2.00991039E8,
+      "regionName": "Амурская область",
+      "sa": "wb62mj8u4s4",
+      "saleInvoiceCostPrice": 1910.08,
+      "saleInvoiceCostPricePerc": 19.179585491073,
+      "saleItemInvoiceQty": 1.0
+    },
+    {
+      "cityName": "Тольятти",
+      "countryName": "Россия",
+      "foName": "Приволжский федеральный округ",
+      "nmID": 1.67713827E8,
+      "regionName": "Самарская область",
+      "sa": "Lost_Cherry",
+      "saleInvoiceCostPrice": 777.77,
+      "saleInvoiceCostPricePerc": 7.8097949807193,
+      "saleItemInvoiceQty": 1.0
+    },
+    {
+      "cityName": "село Залужное",
+      "countryName": "Россия",
+      "foName": "Центральный федеральный округ",
+      "nmID": 1.69352202E8,
+      "regionName": "Воронежская область",
+      "sa": "Духи Tom Ford Lost Cherry 100 мл Lux",
+      "saleInvoiceCostPrice": 1316.86,
+      "saleInvoiceCostPricePerc": 13.2229237375911,
+      "saleItemInvoiceQty": 1.0
+    },
+    {
+      "cityName": "Москва",
+      "countryName": "Россия",
+      "foName": "Центральный федеральный округ",
+      "nmID": 2.00991036E8,
+      "regionName": "Москва",
+      "sa": "wb62mj8u4s1",
+      "saleInvoiceCostPrice": 1974.32,
+      "saleInvoiceCostPricePerc": 19.824655632736,
+      "saleItemInvoiceQty": 1.0
+    },
+    {
+      "cityName": "Москва",
+      "countryName": "Россия",
+      "foName": "Центральный федеральный округ",
+      "nmID": 2.0099104E8,
+      "regionName": "Москва",
+      "sa": "wb62mj8u4s5",
+      "saleInvoiceCostPrice": 1997.48,
+      "saleInvoiceCostPricePerc": 20.0571809163587,
+      "saleItemInvoiceQty": 1.0
+    },
+    {
+      "cityName": "деревня Подолино",
+      "countryName": "Россия",
+      "foName": "Центральный федеральный округ",
+      "nmID": 1.85224901E8,
+      "regionName": "Московская область",
+      "sa": "Носки мужские высокие длинные хлопок набор 5 пар",
+      "saleInvoiceCostPrice": 277.63,
+      "saleInvoiceCostPricePerc": 2.7877328428382,
+      "saleItemInvoiceQty": 1.0
+    },
+    {
+      "cityName": "Ростов-на-Дону",
+      "countryName": "Россия",
+      "foName": "Южный федеральный округ",
+      "nmID": 1.73959978E8,
+      "regionName": "Ростовская область",
+      "sa": "Духи парфюмерная вода Baccarat Rouge 540 Extrait Lux",
+      "saleInvoiceCostPrice": 1704.78,
+      "saleInvoiceCostPricePerc": 17.1181263986837,
+      "saleItemInvoiceQty": 1.0
+    }
+  ]
+}

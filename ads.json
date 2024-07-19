@@ -1,0 +1,662 @@
+[
+  {
+    "updTime": "2024-10-25T03:01:47.408569+03:00",
+    "campName": "Снитч Авто",
+    "paymentType": "Баланс",
+    "updNum": 0.0,
+    "updSum": 42.7,
+    "advertId": 1.9649029E7,
+    "advertType": 8.0,
+    "advertStatus": 9.0
+  },
+  {
+    "updTime": "2024-10-25T03:01:30.355656+03:00",
+    "campName": "Фрисби Авто",
+    "paymentType": "Баланс",
+    "updNum": 0.0,
+    "updSum": 43.13,
+    "advertId": 1.831248E7,
+    "advertType": 8.0,
+    "advertStatus": 9.0
+  },
+  {
+    "updTime": "2024-10-25T03:01:09.808912+03:00",
+    "campName": "Спиннер все поиск",
+    "paymentType": "Баланс",
+    "updNum": 0.0,
+    "updSum": 141.235,
+    "advertId": 1.9649023E7,
+    "advertType": 9.0,
+    "advertStatus": 9.0
+  },
+  {
+    "updTime": "2024-10-25T03:00:46.425236+03:00",
+    "campName": "Медведи Stone Island Поиск",
+    "paymentType": "Баланс",
+    "updNum": 0.0,
+    "updSum": 9.633,
+    "advertId": 1.7492664E7,
+    "advertType": 9.0,
+    "advertStatus": 9.0
+  },
+  {
+    "updTime": "2024-10-25T03:00:35.397472+03:00",
+    "campName": "Чехол Vatrafish АВТО",
+    "paymentType": "Баланс",
+    "updNum": 0.0,
+    "updSum": 336.937,
+    "advertId": 1.6943301E7,
+    "advertType": 8.0,
+    "advertStatus": 9.0
+  },
+  {
+    "updTime": "2024-10-25T03:00:33.669038+03:00",
+    "campName": "Снитч поиск",
+    "paymentType": "Баланс",
+    "updNum": 0.0,
+    "updSum": 5.565,
+    "advertId": 1.9649037E7,
+    "advertType": 9.0,
+    "advertStatus": 9.0
+  },
+  {
+    "updTime": "2024-10-25T03:00:33.346327+03:00",
+    "campName": "Спиннеры все Авто",
+    "paymentType": "Баланс",
+    "updNum": 0.0,
+    "updSum": 1.815,
+    "advertId": 1.9648992E7,
+    "advertType": 8.0,
+    "advertStatus": 9.0
+  },
+  {
+    "updTime": "2024-10-25T03:00:22.672034+03:00",
+    "campName": "Фрисби поиск",
+    "paymentType": "Баланс",
+    "updNum": 0.0,
+    "updSum": 52.2,
+    "advertId": 1.8312584E7,
+    "advertType": 9.0,
+    "advertStatus": 9.0
+  },
+  {
+    "updTime": "2024-10-25T03:00:07.608999+03:00",
+    "campName": "Чехол Vatrafish поиск",
+    "paymentType": "Баланс",
+    "updNum": 0.0,
+    "updSum": 15.239,
+    "advertId": 1.6887398E7,
+    "advertType": 9.0,
+    "advertStatus": 9.0
+  },
+  {
+    "updTime": "2024-10-25T03:00:07.557007+03:00",
+    "campName": "Медведи Stone Island Авто",
+    "paymentType": "Баланс",
+    "updNum": 0.0,
+    "updSum": 141.721,
+    "advertId": 1.7492639E7,
+    "advertType": 8.0,
+    "advertStatus": 9.0
+  },
+  {
+    "updTime": "2024-10-25T03:00:06.234322+03:00",
+    "campName": "Чехлы для катушек кожаные поиск",
+    "paymentType": "Баланс",
+    "updNum": 0.0,
+    "updSum": 8.096,
+    "advertId": 1.8872751E7,
+    "advertType": 9.0,
+    "advertStatus": 9.0
+  },
+  {
+    "updTime": "2024-02-04T23:59:59+03:00",
+    "campName": "Духи Fleur Narcotique 100 мл",
+    "paymentType": "Баланс",
+    "updNum": 0.0,
+    "updSum": 5.0,
+    "advertId": 1.3574115E7,
+    "advertType": 8.0,
+    "advertStatus": 7.0
+  },
+  {
+    "updTime": "2024-02-04T23:59:59+03:00",
+    "campName": "Bleu de Chanel",
+    "paymentType": "Баланс",
+    "updNum": 0.0,
+    "updSum": 43.0,
+    "advertId": 1.282906E7,
+    "advertType": 8.0,
+    "advertStatus": 7.0
+  },
+  {
+    "updTime": "2024-02-04T23:59:59+03:00",
+    "campName": "Духи мужские Dior Sauvage 100 мл/ брнедовые",
+    "paymentType": "Баланс",
+    "updNum": 0.0,
+    "updSum": 9.0,
+    "advertId": 1.3571441E7,
+    "advertType": 8.0,
+    "advertStatus": 7.0
+  },
+  {
+    "updTime": "2024-02-04T23:59:59+03:00",
+    "campName": "TF Lost Cherry Lux 169352202",
+    "paymentType": "Баланс",
+    "updNum": 0.0,
+    "updSum": 16.0,
+    "advertId": 1.3463067E7,
+    "advertType": 8.0,
+    "advertStatus": 7.0
+  },
+  {
+    "updTime": "2024-02-03T23:59:59+03:00",
+    "campName": "Духи Fleur Narcotique 100 мл",
+    "paymentType": "Баланс",
+    "updNum": 0.0,
+    "updSum": 9.0,
+    "advertId": 1.3574115E7,
+    "advertType": 8.0,
+    "advertStatus": 7.0
+  },
+  {
+    "updTime": "2024-02-03T23:59:59+03:00",
+    "campName": "Bleu de Chanel",
+    "paymentType": "Баланс",
+    "updNum": 0.0,
+    "updSum": 26.0,
+    "advertId": 1.282906E7,
+    "advertType": 8.0,
+    "advertStatus": 7.0
+  },
+  {
+    "updTime": "2024-02-03T23:59:59+03:00",
+    "campName": "Духи мужские Dior Sauvage 100 мл/ брнедовые",
+    "paymentType": "Баланс",
+    "updNum": 0.0,
+    "updSum": 11.0,
+    "advertId": 1.3571441E7,
+    "advertType": 8.0,
+    "advertStatus": 7.0
+  },
+  {
+    "updTime": "2024-02-03T23:59:59+03:00",
+    "campName": "TF Lost Cherry Lux 169352202",
+    "paymentType": "Баланс",
+    "updNum": 0.0,
+    "updSum": 15.0,
+    "advertId": 1.3463067E7,
+    "advertType": 8.0,
+    "advertStatus": 7.0
+  },
+  {
+    "updTime": "2024-02-02T23:59:59+03:00",
+    "campName": "Духи Fleur Narcotique 100 мл",
+    "paymentType": "Баланс",
+    "updNum": 0.0,
+    "updSum": 11.0,
+    "advertId": 1.3574115E7,
+    "advertType": 8.0,
+    "advertStatus": 7.0
+  },
+  {
+    "updTime": "2024-02-02T23:59:59+03:00",
+    "campName": "Bleu de Chanel",
+    "paymentType": "Баланс",
+    "updNum": 0.0,
+    "updSum": 37.0,
+    "advertId": 1.282906E7,
+    "advertType": 8.0,
+    "advertStatus": 7.0
+  },
+  {
+    "updTime": "2024-02-02T23:59:59+03:00",
+    "campName": "Духи мужские Dior Sauvage 100 мл/ брнедовые",
+    "paymentType": "Баланс",
+    "updNum": 0.0,
+    "updSum": 10.0,
+    "advertId": 1.3571441E7,
+    "advertType": 8.0,
+    "advertStatus": 7.0
+  },
+  {
+    "updTime": "2024-02-02T23:59:59+03:00",
+    "campName": "TF Lost Cherry Lux 169352202",
+    "paymentType": "Баланс",
+    "updNum": 0.0,
+    "updSum": 14.0,
+    "advertId": 1.3463067E7,
+    "advertType": 8.0,
+    "advertStatus": 7.0
+  },
+  {
+    "updTime": "2024-02-01T23:59:59+03:00",
+    "campName": "Духи Fleur Narcotique 100 мл",
+    "paymentType": "Баланс",
+    "updNum": 0.0,
+    "updSum": 14.0,
+    "advertId": 1.3574115E7,
+    "advertType": 8.0,
+    "advertStatus": 7.0
+  },
+  {
+    "updTime": "2024-02-01T23:59:59+03:00",
+    "campName": "Bleu de Chanel",
+    "paymentType": "Баланс",
+    "updNum": 0.0,
+    "updSum": 31.0,
+    "advertId": 1.282906E7,
+    "advertType": 8.0,
+    "advertStatus": 7.0
+  },
+  {
+    "updTime": "2024-02-01T23:59:59+03:00",
+    "campName": "Духи мужские Dior Sauvage 100 мл/ брнедовые",
+    "paymentType": "Баланс",
+    "updNum": 0.0,
+    "updSum": 13.0,
+    "advertId": 1.3571441E7,
+    "advertType": 8.0,
+    "advertStatus": 7.0
+  },
+  {
+    "updTime": "2024-02-01T23:59:59+03:00",
+    "campName": "TF Lost Cherry Lux 169352202",
+    "paymentType": "Баланс",
+    "updNum": 0.0,
+    "updSum": 19.0,
+    "advertId": 1.3463067E7,
+    "advertType": 8.0,
+    "advertStatus": 7.0
+  },
+  {
+    "updTime": "2024-02-01T20:15:07.184635+03:00",
+    "campName": "Tom Ford Lost Cherry",
+    "paymentType": "Счет",
+    "updNum": 0.0,
+    "updSum": 95.0,
+    "advertId": 1.2762659E7,
+    "advertType": 8.0,
+    "advertStatus": 7.0
+  },
+  {
+    "updTime": "2024-02-01T17:19:47.996989+03:00",
+    "campName": "Женские и унисекс",
+    "paymentType": "Баланс",
+    "updNum": 0.0,
+    "updSum": 86.0,
+    "advertId": 1.2799522E7,
+    "advertType": 8.0,
+    "advertStatus": 7.0
+  },
+  {
+    "updTime": "2024-01-31T23:59:59+03:00",
+    "campName": "Духи Fleur Narcotique 100 мл",
+    "paymentType": "Баланс",
+    "updNum": 0.0,
+    "updSum": 33.0,
+    "advertId": 1.3574115E7,
+    "advertType": 8.0,
+    "advertStatus": 7.0
+  },
+  {
+    "updTime": "2024-01-31T23:59:59+03:00",
+    "campName": "Женские и унисекс",
+    "paymentType": "Баланс",
+    "updNum": 0.0,
+    "updSum": 233.0,
+    "advertId": 1.2799522E7,
+    "advertType": 8.0,
+    "advertStatus": 7.0
+  },
+  {
+    "updTime": "2024-01-31T23:59:59+03:00",
+    "campName": "Bleu de Chanel",
+    "paymentType": "Баланс",
+    "updNum": 0.0,
+    "updSum": 27.0,
+    "advertId": 1.282906E7,
+    "advertType": 8.0,
+    "advertStatus": 7.0
+  },
+  {
+    "updTime": "2024-01-31T23:59:59+03:00",
+    "campName": "Tom Ford Lost Cherry",
+    "paymentType": "Счет",
+    "updNum": 0.0,
+    "updSum": 98.0,
+    "advertId": 1.2762659E7,
+    "advertType": 8.0,
+    "advertStatus": 7.0
+  },
+  {
+    "updTime": "2024-01-31T23:59:59+03:00",
+    "campName": "Духи мужские Dior Sauvage 100 мл/ брнедовые",
+    "paymentType": "Баланс",
+    "updNum": 0.0,
+    "updSum": 91.0,
+    "advertId": 1.3571441E7,
+    "advertType": 8.0,
+    "advertStatus": 7.0
+  },
+  {
+    "updTime": "2024-01-31T23:59:59+03:00",
+    "campName": "TF Lost Cherry Lux 169352202",
+    "paymentType": "Баланс",
+    "updNum": 0.0,
+    "updSum": 12.0,
+    "advertId": 1.3463067E7,
+    "advertType": 8.0,
+    "advertStatus": 7.0
+  },
+  {
+    "updTime": "2024-01-30T23:59:59+03:00",
+    "campName": "Духи Fleur Narcotique 100 мл",
+    "paymentType": "Баланс",
+    "updNum": 0.0,
+    "updSum": 90.0,
+    "advertId": 1.3574115E7,
+    "advertType": 8.0,
+    "advertStatus": 7.0
+  },
+  {
+    "updTime": "2024-01-30T23:59:59+03:00",
+    "campName": "Женские и унисекс",
+    "paymentType": "Баланс",
+    "updNum": 0.0,
+    "updSum": 78.0,
+    "advertId": 1.2799522E7,
+    "advertType": 8.0,
+    "advertStatus": 7.0
+  },
+  {
+    "updTime": "2024-01-30T23:59:59+03:00",
+    "campName": "Bleu de Chanel",
+    "paymentType": "Баланс",
+    "updNum": 0.0,
+    "updSum": 5.0,
+    "advertId": 1.282906E7,
+    "advertType": 8.0,
+    "advertStatus": 7.0
+  },
+  {
+    "updTime": "2024-01-30T23:59:59+03:00",
+    "campName": "Tom Ford Lost Cherry",
+    "paymentType": "Счет",
+    "updNum": 0.0,
+    "updSum": 25.0,
+    "advertId": 1.2762659E7,
+    "advertType": 8.0,
+    "advertStatus": 7.0
+  },
+  {
+    "updTime": "2024-01-30T23:59:59+03:00",
+    "campName": "Духи мужские Dior Sauvage 100 мл/ брнедовые",
+    "paymentType": "Баланс",
+    "updNum": 0.0,
+    "updSum": 122.0,
+    "advertId": 1.3571441E7,
+    "advertType": 8.0,
+    "advertStatus": 7.0
+  },
+  {
+    "updTime": "2024-01-30T23:59:59+03:00",
+    "campName": "TF Lost Cherry Lux 169352202",
+    "paymentType": "Баланс",
+    "updNum": 0.0,
+    "updSum": 4.0,
+    "advertId": 1.3463067E7,
+    "advertType": 8.0,
+    "advertStatus": 7.0
+  },
+  {
+    "updTime": "2024-01-30T23:34:43.56121+03:00",
+    "campName": "Мужские и унисекс",
+    "paymentType": "Баланс",
+    "updNum": 0.0,
+    "updSum": 336.0,
+    "advertId": 1.2799269E7,
+    "advertType": 8.0,
+    "advertStatus": 7.0
+  },
+  {
+    "updTime": "2024-01-29T23:59:59+03:00",
+    "campName": "Женские и унисекс",
+    "paymentType": "Баланс",
+    "updNum": 0.0,
+    "updSum": 103.0,
+    "advertId": 1.2799522E7,
+    "advertType": 8.0,
+    "advertStatus": 7.0
+  },
+  {
+    "updTime": "2024-01-29T23:59:59+03:00",
+    "campName": "Bleu de Chanel",
+    "paymentType": "Баланс",
+    "updNum": 0.0,
+    "updSum": 2.0,
+    "advertId": 1.282906E7,
+    "advertType": 8.0,
+    "advertStatus": 7.0
+  },
+  {
+    "updTime": "2024-01-29T23:59:59+03:00",
+    "campName": "Мужские и унисекс",
+    "paymentType": "Баланс",
+    "updNum": 0.0,
+    "updSum": 164.0,
+    "advertId": 1.2799269E7,
+    "advertType": 8.0,
+    "advertStatus": 7.0
+  },
+  {
+    "updTime": "2024-01-29T23:59:59+03:00",
+    "campName": "Tom Ford Lost Cherry",
+    "paymentType": "Счет",
+    "updNum": 0.0,
+    "updSum": 4.0,
+    "advertId": 1.2762659E7,
+    "advertType": 8.0,
+    "advertStatus": 7.0
+  },
+  {
+    "updTime": "2024-01-29T23:59:59+03:00",
+    "campName": "TF Lost Cherry Lux 169352202",
+    "paymentType": "Баланс",
+    "updNum": 0.0,
+    "updSum": 1.0,
+    "advertId": 1.3463067E7,
+    "advertType": 8.0,
+    "advertStatus": 7.0
+  },
+  {
+    "updTime": "2024-01-28T23:59:59+03:00",
+    "campName": "Bleu de Chanel",
+    "paymentType": "Баланс",
+    "updNum": 0.0,
+    "updSum": 32.0,
+    "advertId": 1.282906E7,
+    "advertType": 8.0,
+    "advertStatus": 7.0
+  },
+  {
+    "updTime": "2024-01-28T23:59:59+03:00",
+    "campName": "Tom Ford Lost Cherry",
+    "paymentType": "Счет",
+    "updNum": 0.0,
+    "updSum": 86.0,
+    "advertId": 1.2762659E7,
+    "advertType": 8.0,
+    "advertStatus": 7.0
+  },
+  {
+    "updTime": "2024-01-28T23:59:59+03:00",
+    "campName": "TF Lost Cherry Lux 169352202",
+    "paymentType": "Баланс",
+    "updNum": 0.0,
+    "updSum": 14.0,
+    "advertId": 1.3463067E7,
+    "advertType": 8.0,
+    "advertStatus": 7.0
+  },
+  {
+    "updTime": "2024-01-27T23:59:59+03:00",
+    "campName": "Bleu de Chanel",
+    "paymentType": "Баланс",
+    "updNum": 0.0,
+    "updSum": 26.0,
+    "advertId": 1.282906E7,
+    "advertType": 8.0,
+    "advertStatus": 7.0
+  },
+  {
+    "updTime": "2024-01-27T23:59:59+03:00",
+    "campName": "Tom Ford Lost Cherry",
+    "paymentType": "Счет",
+    "updNum": 0.0,
+    "updSum": 68.0,
+    "advertId": 1.2762659E7,
+    "advertType": 8.0,
+    "advertStatus": 7.0
+  },
+  {
+    "updTime": "2024-01-27T23:59:59+03:00",
+    "campName": "TF Lost Cherry Lux 169352202",
+    "paymentType": "Баланс",
+    "updNum": 0.0,
+    "updSum": 6.0,
+    "advertId": 1.3463067E7,
+    "advertType": 8.0,
+    "advertStatus": 7.0
+  },
+  {
+    "updTime": "2024-01-27T00:09:30.583831+03:00",
+    "campName": "TF Lost Cherry Lux 169352202",
+    "paymentType": "Счет",
+    "updNum": 0.0,
+    "updSum": 8.0,
+    "advertId": 1.3463067E7,
+    "advertType": 8.0,
+    "advertStatus": 7.0
+  },
+  {
+    "updTime": "2024-01-26T23:59:59+03:00",
+    "campName": "Bleu de Chanel",
+    "paymentType": "Баланс",
+    "updNum": 0.0,
+    "updSum": 22.0,
+    "advertId": 1.282906E7,
+    "advertType": 8.0,
+    "advertStatus": 7.0
+  },
+  {
+    "updTime": "2024-01-26T23:59:59+03:00",
+    "campName": "Tom Ford Lost Cherry",
+    "paymentType": "Счет",
+    "updNum": 0.0,
+    "updSum": 62.0,
+    "advertId": 1.2762659E7,
+    "advertType": 8.0,
+    "advertStatus": 7.0
+  },
+  {
+    "updTime": "2024-01-26T23:59:59+03:00",
+    "campName": "TF Lost Cherry Lux 169352202",
+    "paymentType": "Счет",
+    "updNum": 0.0,
+    "updSum": 492.0,
+    "advertId": 1.3463067E7,
+    "advertType": 8.0,
+    "advertStatus": 7.0
+  },
+  {
+    "updTime": "2024-01-25T23:59:59+03:00",
+    "campName": "Tom Ford Lost Cherry",
+    "paymentType": "Счет",
+    "updNum": 0.0,
+    "updSum": 62.0,
+    "advertId": 1.2762659E7,
+    "advertType": 8.0,
+    "advertStatus": 7.0
+  },
+  {
+    "updTime": "2024-01-12T23:35:30.452832+03:00",
+    "campName": "Tom Ford Lost Cherry",
+    "paymentType": "Счет",
+    "updNum": 0.0,
+    "updSum": 13.0,
+    "advertId": 1.2762659E7,
+    "advertType": 8.0,
+    "advertStatus": 7.0
+  },
+  {
+    "updTime": "2024-01-11T23:59:59+03:00",
+    "campName": "Tom Ford Lost Cherry",
+    "paymentType": "Счет",
+    "updNum": 0.0,
+    "updSum": 14.0,
+    "advertId": 1.2762659E7,
+    "advertType": 8.0,
+    "advertStatus": 7.0
+  },
+  {
+    "updTime": "2024-01-10T23:59:59+03:00",
+    "campName": "Tom Ford Lost Cherry",
+    "paymentType": "Счет",
+    "updNum": 0.0,
+    "updSum": 13.0,
+    "advertId": 1.2762659E7,
+    "advertType": 8.0,
+    "advertStatus": 7.0
+  },
+  {
+    "updTime": "2024-01-09T23:59:59+03:00",
+    "campName": "Tom Ford Lost Cherry",
+    "paymentType": "Счет",
+    "updNum": 0.0,
+    "updSum": 14.0,
+    "advertId": 1.2762659E7,
+    "advertType": 8.0,
+    "advertStatus": 7.0
+  },
+  {
+    "updTime": "2024-01-08T23:59:59+03:00",
+    "campName": "Tom Ford Lost Cherry",
+    "paymentType": "Счет",
+    "updNum": 0.0,
+    "updSum": 20.0,
+    "advertId": 1.2762659E7,
+    "advertType": 8.0,
+    "advertStatus": 7.0
+  },
+  {
+    "updTime": "2024-01-07T23:59:59+03:00",
+    "campName": "Tom Ford Lost Cherry",
+    "paymentType": "Счет",
+    "updNum": 0.0,
+    "updSum": 21.0,
+    "advertId": 1.2762659E7,
+    "advertType": 8.0,
+    "advertStatus": 7.0
+  },
+  {
+    "updTime": "2024-01-06T23:59:59+03:00",
+    "campName": "Tom Ford Lost Cherry",
+    "paymentType": "Счет",
+    "updNum": 0.0,
+    "updSum": 18.0,
+    "advertId": 1.2762659E7,
+    "advertType": 8.0,
+    "advertStatus": 7.0
+  },
+  {
+    "updTime": "2024-01-05T23:59:59+03:00",
+    "campName": "Tom Ford Lost Cherry",
+    "paymentType": "Счет",
+    "updNum": 0.0,
+    "updSum": 20.0,
+    "advertId": 1.2762659E7,
+    "advertType": 8.0,
+    "advertStatus": 7.0
+  }
+]
