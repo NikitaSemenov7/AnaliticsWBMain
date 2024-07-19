@@ -3,76 +3,88 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.apache.poi.ss.usermodel.CellStyle;
 
-
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 
 public class ExcelConverter {
-    private static int counter = 0;
+    public static int counter = 0;
 
-    private static double sum;
+    public static double sum;
 
-    private static CellStyle styleGreen;
+    public static CellStyle styleGreen;
 
-    private static String directory = "e:\\Бизнес\\Черновики";
+    public static final String directoryIntroductories = "e:\\Proga\\AnaliticsWB\\Вводные\\";
+
+    public static XSSFSheet sheetReportConverted;
+    public static XSSFSheet sheetNazvaniyaRK;
+    public static XSSFSheet sheetReportFromWB;
 
     public static void main(String[] args) {
-        try {
-            //отрываем потоки
-            FileOutputStream fileOutputStream = new FileOutputStream(directory + "\\UnitЭкономика.xlsx");
-            FileInputStream fileInputStreamReportFromWB = new FileInputStream(new File(directory + "\\ОтчетДетализация.xlsx"));
-            FileInputStream fileInputStreamSebestoimost = new FileInputStream(new File(directory + "\\ВводныеСебестоимость.xlsx"));
+        mainShadow("e:\\Proga\\AnaliticsWB\\Отчеты0807_1407\\");
+    }
+
+    public static void mainShadow(String directoryReports) {
+        try (FileOutputStream fileOutputStream = new FileOutputStream(directoryReports + "UnitЭкономика.xlsx");
+             FileInputStream fileInputStreamReportFromWB = new FileInputStream(directoryReports + "ОтчетДетализация.xlsx");
+             FileInputStream fileInputStreamSebestoimost = new FileInputStream(directoryIntroductories + "ВводныеСебестоимость.xlsx");
+             FileInputStream fileInputStreamHranenie = new FileInputStream(directoryReports + "ОтчетХранение.xlsx");
+             FileInputStream fileInputStreamProchieUderzhaniya = new FileInputStream(directoryReports + "ОтчетРеклама.xlsx");
+             FileInputStream fileInputStreamNazvaniyaRK = new FileInputStream(directoryIntroductories + "ВводныеНазванияРК.xlsx")) {
+
+            XSSFWorkbook reportConverted = new XSSFWorkbook();
+            sheetReportConverted = reportConverted.createSheet();
 
             //инициализируем Excel файлы
-            XSSFWorkbook reportConverted = new XSSFWorkbook();
             XSSFWorkbook reportFromWB = new XSSFWorkbook(fileInputStreamReportFromWB);
             XSSFWorkbook sebestoimost = new XSSFWorkbook(fileInputStreamSebestoimost);
+            XSSFWorkbook workbookHranenie = new XSSFWorkbook(fileInputStreamHranenie);
+            XSSFWorkbook workbookProchieUderzhaniya = new XSSFWorkbook(fileInputStreamProchieUderzhaniya);
+            XSSFWorkbook workbookNazvaniyaRK = new XSSFWorkbook(fileInputStreamNazvaniyaRK);
 
             //инициализируем листы в Excel файлах
-            XSSFSheet sheetReportConverted = reportConverted.createSheet();
-            XSSFSheet sheetReportFromWB = reportFromWB.getSheetAt(0);
+            sheetReportFromWB = reportFromWB.getSheetAt(0);
             XSSFSheet sheetSebestoimost = sebestoimost.getSheetAt(0);
-
+            XSSFSheet sheetHranenie = workbookHranenie.getSheetAt(0);
+            XSSFSheet sheetProchieUderzhaniya = workbookProchieUderzhaniya.getSheetAt(0);
+            sheetNazvaniyaRK = workbookNazvaniyaRK.getSheetAt(0);
 
             //создание зеленого стиля для заливки ячейки
             styleGreen = reportConverted.createCellStyle();
             styleGreen.setFillForegroundColor(IndexedColors.BRIGHT_GREEN.getIndex());
             styleGreen.setFillPattern(FillPatternType.SOLID_FOREGROUND);
 
-
             //инициализируем 1-ый столбец
-            //initFirstColumn("Дата с ... до ...", sheetReportConverted);
-            initFirstColumn("Товар", sheetReportConverted);
-            initFirstColumn("Выручка до вычета комиссии", sheetReportConverted);
-            initFirstColumn("Продажа", sheetReportConverted);
-            initFirstColumn("Продажа штук", sheetReportConverted);
-            initFirstColumn("Возврат", sheetReportConverted);
-            initFirstColumn("Возврат штук", sheetReportConverted);
-            initFirstColumn("Выручка после вычета комиссии", sheetReportConverted);
-            initFirstColumn("Продажа", sheetReportConverted);
-            initFirstColumn("Возврат", sheetReportConverted);
-            initFirstColumn("Коррекция продаж", sheetReportConverted);
-            initFirstColumn("Получены деньги штук", sheetReportConverted);
-            initFirstColumn("Выручка до вычета комиссии на 1 шт.", sheetReportConverted);
-            initFirstColumn("Выручка после вычета комиссии на 1 шт.", sheetReportConverted);
-            initFirstColumn("Логистика", sheetReportConverted);
-            initFirstColumn("Доставка к клиенту", sheetReportConverted);
-            initFirstColumn("Доставка к клиенту штук", sheetReportConverted);
-            initFirstColumn("Доставка от клиента", sheetReportConverted);
-            initFirstColumn("Доставка от клиента штук", sheetReportConverted);
-            initFirstColumn("Коррекция логистики", sheetReportConverted);
-            initFirstColumn("Штрафы", sheetReportConverted);
-            initFirstColumn("Хранение", sheetReportConverted);
-            initFirstColumn("Прочие удержания", sheetReportConverted);
-            initFirstColumn("Приход на счет вб", sheetReportConverted);
-            initFirstColumn("Себестоимость", sheetReportConverted);
-            initFirstColumn("Фулфилмент", sheetReportConverted);
-            initFirstColumn("Налог 7%", sheetReportConverted);
-            initFirstColumn("Прибыль на маркетинг", sheetReportConverted);
-            initFirstColumn("Прибыль на маркетинг на 1 штуку", sheetReportConverted);
+            initFirstColumn("Товар");
+            initFirstColumn("Выручка до вычета комиссии");
+            initFirstColumn("Продажа");
+            initFirstColumn("Продажа штук");
+            initFirstColumn("Возврат");
+            initFirstColumn("Возврат штук");
+            initFirstColumn("Выручка после вычета комиссии");
+            initFirstColumn("Продажа");
+            initFirstColumn("Возврат");
+            initFirstColumn("Коррекция продаж");
+            initFirstColumn("Получены деньги штук");
+            initFirstColumn("Выручка до вычета комиссии на 1 шт.");
+            initFirstColumn("Выручка после вычета комиссии на 1 шт.");
+            initFirstColumn("Логистика");
+            initFirstColumn("Доставка к клиенту");
+            initFirstColumn("Доставка к клиенту штук");
+            initFirstColumn("Доставка от клиента");
+            initFirstColumn("Доставка от клиента штук");
+            initFirstColumn("Коррекция логистики");
+            initFirstColumn("Штрафы");
+            initFirstColumn("Хранение");
+            initFirstColumn("Платная приемка");
+            initFirstColumn("Прочие удержания");
+            initFirstColumn("Приход на счет вб");
+            initFirstColumn("Себестоимость");
+            initFirstColumn("Фулфилмент");
+            initFirstColumn("Налог 7%");
+            initFirstColumn("Прибыль на маркетинг");
+            initFirstColumn("Прибыль на маркетинг на 1 штуку");
 
             //расставляем названия категорий
             ArrayList<String> list = new ArrayList<>();
@@ -80,7 +92,7 @@ public class ExcelConverter {
                 Cell cell = row.getCell(Alphabet.C.ordinal());
                 if (cell != null) {
                     String category = cell.getStringCellValue();
-                    if (!list.contains(category) && !category.equals("Предмет")) {
+                    if (!list.contains(category) && !category.equals("Предмет") && !category.isEmpty()) {
                         list.add(category);
                     }
                 }
@@ -94,34 +106,34 @@ public class ExcelConverter {
             sheetReportConverted.getRow(0).createCell(1).setCellValue("Общий");
 
             //продажа до вычета комиссии
-            double prodazhaDoVichKomiss = initOneCondition(Alphabet.K.ordinal(), "Продажа", Alphabet.P.ordinal(), 2, 1, sheetReportFromWB, sheetReportConverted);
+            double prodazhaDoVichKomiss = initOneCondition(Alphabet.K.ordinal(), "Продажа", Alphabet.P.ordinal(), 2, 1, sheetReportFromWB);
             ArrayList<Double> listProdazhaDoVichKomiss = new ArrayList<>();
             for (int i = 0; i < list.size(); i++) {
-                sum = initTwoCondition(Alphabet.K.ordinal(), "Продажа", Alphabet.C.ordinal(), list.get(i), Alphabet.P.ordinal(), 2, i + 2, sheetReportFromWB, sheetReportConverted);
+                sum = initTwoCondition(Alphabet.K.ordinal(), "Продажа", Alphabet.C.ordinal(), list.get(i), Alphabet.P.ordinal(), 2, i + 2);
                 listProdazhaDoVichKomiss.add(sum);
             }
 
             //продажа штук
-            double prodazhaShtuk = initOneCondition(Alphabet.K.ordinal(), "Продажа", Alphabet.N.ordinal(), 3, 1, sheetReportFromWB, sheetReportConverted);
+            double prodazhaShtuk = initOneCondition(Alphabet.J.ordinal(), "Продажа", Alphabet.N.ordinal(), 3, 1, sheetReportFromWB);
             ArrayList<Double> listProdazhaShtuk = new ArrayList<>();
             for (int i = 0; i < list.size(); i++) {
-                sum = initTwoCondition(Alphabet.K.ordinal(), "Продажа", Alphabet.C.ordinal(), list.get(i), Alphabet.N.ordinal(), 3, i + 2, sheetReportFromWB, sheetReportConverted);
+                sum = initTwoCondition(Alphabet.J.ordinal(), "Продажа", Alphabet.C.ordinal(), list.get(i), Alphabet.N.ordinal(), 3, i + 2);
                 listProdazhaShtuk.add(sum);
             }
 
             //возврат до вычета комиссии
-            double vozvratDoVichKomiss = initOneCondition(Alphabet.K.ordinal(), "Возврат", Alphabet.T.ordinal(), 4, 1, sheetReportFromWB, sheetReportConverted);
+            double vozvratDoVichKomiss = initOneCondition(Alphabet.K.ordinal(), "Возврат", Alphabet.P.ordinal(), 4, 1, sheetReportFromWB);
             ArrayList<Double> listVozvratDoVichKomiss = new ArrayList<>();
             for (int i = 0; i < list.size(); i++) {
-                sum = initTwoCondition(Alphabet.K.ordinal(), "Возврат", Alphabet.C.ordinal(), list.get(i), Alphabet.P.ordinal(), 4, i + 2, sheetReportFromWB, sheetReportConverted);
+                sum = initTwoCondition(Alphabet.K.ordinal(), "Возврат", Alphabet.C.ordinal(), list.get(i), Alphabet.P.ordinal(), 4, i + 2);
                 listVozvratDoVichKomiss.add(sum);
             }
 
             //возврат штук
-            double vozvratShtuk = initOneCondition(Alphabet.K.ordinal(), "Возврат", Alphabet.N.ordinal(), 5, 1, sheetReportFromWB, sheetReportConverted);
+            double vozvratShtuk = initOneCondition(Alphabet.K.ordinal(), "Возврат", Alphabet.N.ordinal(), 5, 1, sheetReportFromWB);
             ArrayList<Double> listVozvratShtuk = new ArrayList<>();
             for (int i = 0; i < list.size(); i++) {
-                sum = initTwoCondition(Alphabet.K.ordinal(), "Возврат", Alphabet.C.ordinal(), list.get(i), Alphabet.N.ordinal(), 5, i + 2, sheetReportFromWB, sheetReportConverted);
+                sum = initTwoCondition(Alphabet.K.ordinal(), "Возврат", Alphabet.C.ordinal(), list.get(i), Alphabet.N.ordinal(), 5, i + 2);
                 listVozvratShtuk.add(sum);
             }
 
@@ -136,26 +148,26 @@ public class ExcelConverter {
             }
 
             //продажа
-            double prodazhaPosleVichKomiss = initOneCondition(Alphabet.K.ordinal(), "Продажа", Alphabet.AG.ordinal(), 7, 1, sheetReportFromWB, sheetReportConverted);
+            double prodazhaPosleVichKomiss = initOneCondition(Alphabet.J.ordinal(), "Продажа", Alphabet.AG.ordinal(), 7, 1, sheetReportFromWB);
             ArrayList<Double> listProdazhaPosleVichKomiss = new ArrayList<>();
             for (int i = 0; i < list.size(); i++) {
-                sum = initTwoCondition(Alphabet.K.ordinal(), "Продажа", Alphabet.C.ordinal(), list.get(i), Alphabet.AG.ordinal(), 7, i + 2, sheetReportFromWB, sheetReportConverted);
+                sum = initTwoCondition(Alphabet.J.ordinal(), "Продажа", Alphabet.C.ordinal(), list.get(i), Alphabet.AG.ordinal(), 7, i + 2);
                 listProdazhaPosleVichKomiss.add(sum);
             }
 
             //возврат
-            double vozvratPosleVychKomiss = initOneCondition(Alphabet.K.ordinal(), "Возврат", Alphabet.AG.ordinal(), 8, 1, sheetReportFromWB, sheetReportConverted);
+            double vozvratPosleVychKomiss = initOneCondition(Alphabet.K.ordinal(), "Возврат", Alphabet.AG.ordinal(), 8, 1, sheetReportFromWB);
             ArrayList<Double> listVozvratPosleVichKomiss = new ArrayList<>();
             for (int i = 0; i < list.size(); i++) {
-                sum = initTwoCondition(Alphabet.K.ordinal(), "Возврат", Alphabet.C.ordinal(), list.get(i), Alphabet.AG.ordinal(), 8, i + 2, sheetReportFromWB, sheetReportConverted);
+                sum = initTwoCondition(Alphabet.K.ordinal(), "Возврат", Alphabet.C.ordinal(), list.get(i), Alphabet.AG.ordinal(), 8, i + 2);
                 listVozvratPosleVichKomiss.add(sum);
             }
 
             //коррекция продаж
-            double korrekciyaProdazh = initOneCondition(Alphabet.K.ordinal(), "Коррекция продаж", Alphabet.AG.ordinal(), 9, 1, sheetReportFromWB, sheetReportConverted);
+            double korrekciyaProdazh = initOneCondition(Alphabet.K.ordinal(), "Коррекция продаж", Alphabet.AG.ordinal(), 9, 1, sheetReportFromWB);
             ArrayList<Double> listKorrekciyaProdazh = new ArrayList<>();
             for (int i = 0; i < list.size(); i++) {
-                sum = initTwoCondition(Alphabet.K.ordinal(), "Коррекция продаж", Alphabet.C.ordinal(), list.get(i), Alphabet.AG.ordinal(), 9, i + 2, sheetReportFromWB, sheetReportConverted);
+                sum = initTwoCondition(Alphabet.K.ordinal(), "Коррекция продаж", Alphabet.C.ordinal(), list.get(i), Alphabet.AG.ordinal(), 9, i + 2);
                 listKorrekciyaProdazh.add(sum);
             }
 
@@ -180,138 +192,138 @@ public class ExcelConverter {
             }
 
             //доставка к клиенту
-            double dostavkaKKlientu = initOneCondition(Alphabet.AH.ordinal(), "1", Alphabet.AJ.ordinal(), 14, 1, sheetReportFromWB, sheetReportConverted);
+            double dostavkaKKlientu = initOneCondition(Alphabet.AH.ordinal(), "1", Alphabet.AJ.ordinal(), 14, 1, sheetReportFromWB);
             ArrayList<Double> listDostavkaKklientu = new ArrayList<>();
             for (int i = 0; i < list.size(); i++) {
-                sum = initTwoCondition(Alphabet.AH.ordinal(), "1", Alphabet.C.ordinal(), list.get(i), Alphabet.AJ.ordinal(), 14, i + 2, sheetReportFromWB, sheetReportConverted);
+                sum = initTwoCondition(Alphabet.AH.ordinal(), "1", Alphabet.C.ordinal(), list.get(i), Alphabet.AJ.ordinal(), 14, i + 2);
                 listDostavkaKklientu.add(sum);
             }
 
             //доставка к клиенту штук
-            double dostavkaKKlientuShtuk = initOneCondition(Alphabet.AH.ordinal(), "1", Alphabet.AH.ordinal(), 15, 1, sheetReportFromWB, sheetReportConverted);
-            ArrayList<Double> listDostavkaKklientuShtuk = new ArrayList<>();
+            initSumInColumn(Alphabet.AH.ordinal(), 15,Alphabet.B.ordinal(), sheetReportFromWB);
             for (int i = 0; i < list.size(); i++) {
-                sum = initTwoCondition(Alphabet.AH.ordinal(), "1", Alphabet.C.ordinal(), list.get(i), Alphabet.AH.ordinal(), 15, i + 2, sheetReportFromWB, sheetReportConverted);
-                listDostavkaKklientuShtuk.add(sum);
+                sum = initTwoCondition(Alphabet.AH.ordinal(), "1", Alphabet.C.ordinal(), list.get(i), Alphabet.AH.ordinal(), 15, i + 2);
             }
 
             //доставка от клиента
-            double dostavkaOtKlienta = initOneCondition(Alphabet.AI.ordinal(), "1", Alphabet.AJ.ordinal(), 16, 1, sheetReportFromWB, sheetReportConverted);
+            double dostavkaOtKlienta = initOneCondition(Alphabet.AI.ordinal(), "1", Alphabet.AJ.ordinal(), 16, 1, sheetReportFromWB);
             ArrayList<Double> listDostavkaOtklienta = new ArrayList<>();
             for (int i = 0; i < list.size(); i++) {
-                sum = initTwoCondition(Alphabet.AI.ordinal(), "1", Alphabet.C.ordinal(), list.get(i), Alphabet.AJ.ordinal(), 16, i + 2, sheetReportFromWB, sheetReportConverted);
+                sum = initTwoCondition(Alphabet.AI.ordinal(), "1", Alphabet.C.ordinal(), list.get(i), Alphabet.AJ.ordinal(), 16, i + 2);
                 listDostavkaOtklienta.add(sum);
             }
 
             //доставка от клиента штук
-            double dostavkaOtKlientaShtuk = initOneCondition(Alphabet.AI.ordinal(), "1", Alphabet.AI.ordinal(), 17, 1, sheetReportFromWB, sheetReportConverted);
-            ArrayList<Double> listDostavkaOtKlientaShtuk = new ArrayList<>();
+            initSumInColumn(Alphabet.AI.ordinal(), 17,Alphabet.B.ordinal(), sheetReportFromWB);
             for (int i = 0; i < list.size(); i++) {
-                sum = initTwoCondition(Alphabet.AI.ordinal(), "1", Alphabet.C.ordinal(), list.get(i), Alphabet.AI.ordinal(), 17, i + 2, sheetReportFromWB, sheetReportConverted);
-                listDostavkaOtKlientaShtuk.add(sum);
+                sum = initTwoCondition(Alphabet.AI.ordinal(), "1", Alphabet.C.ordinal(), list.get(i), Alphabet.AI.ordinal(), 17, i + 2);
             }
 
             //коррекция логистики
-            double korekciyaLogistiki = initOneCondition(Alphabet.K.ordinal(), "Коррекция логистики", Alphabet.AJ.ordinal(), 18, 1, sheetReportFromWB, sheetReportConverted);
+            double korekciyaLogistiki = initOneCondition(Alphabet.K.ordinal(), "Коррекция логистики", Alphabet.AJ.ordinal(), 18, 1, sheetReportFromWB);
             ArrayList<Double> listKorekciyaLogistiki = new ArrayList<>();
             for (int i = 0; i < list.size(); i++) {
-                sum = initTwoCondition(Alphabet.K.ordinal(), "Коррекция логистики", Alphabet.C.ordinal(), list.get(i), Alphabet.AJ.ordinal(), 18, i + 2, sheetReportFromWB, sheetReportConverted);
+                sum = initTwoCondition(Alphabet.K.ordinal(), "Коррекция логистики", Alphabet.C.ordinal(), list.get(i), Alphabet.AJ.ordinal(), 18, i + 2);
                 listKorekciyaLogistiki.add(sum);
             }
 
-            //штрафы
-            double shtrafi = initOneCondition(Alphabet.K.ordinal(), "Штраф", Alphabet.AK.ordinal(), 19, 1, sheetReportFromWB, sheetReportConverted);
+
+
 
             //хранение
-            double hranenie = initSumInColumn(Alphabet.BD.ordinal(), 20, 1, sheetReportFromWB, sheetReportConverted);
-            FileInputStream fileInputStreamHranenie = new FileInputStream(new File("e:\\Бизнес\\Черновики\\ОтчетХранение.xlsx"));
-            XSSFWorkbook workbookHranenie = new XSSFWorkbook(fileInputStreamHranenie);
-            XSSFSheet sheetHranenie = workbookHranenie.getSheetAt(0);
+            double hranenie = initSumInColumn(Alphabet.BD.ordinal(), 20, 1, sheetReportFromWB);
             ArrayList<Double> listHranenie = new ArrayList<>();
             for (int i = 0; i < list.size(); i++) {
-                sum = initOneCondition(Alphabet.N.ordinal(), list.get(i), Alphabet.T.ordinal(), 20, i + 2, sheetHranenie, sheetReportConverted);
+                sum = initOneCondition(Alphabet.N.ordinal(), list.get(i), Alphabet.T.ordinal(), 20, i + 2, sheetHranenie);
                 listHranenie.add(sum);
             }
-            fileInputStreamHranenie.close();
+
+            //получаем список категорий, по которым были затраты по хранению для проверки, что их столько же сколько list.size()
+            ArrayList<String> listHranenieCategories = new ArrayList<>();
+            for (Row row: sheetHranenie) {
+                String categoryName = row.getCell(Alphabet.N.ordinal()).getStringCellValue();
+                if (!categoryName.equals("Предмет") && !listHranenieCategories.contains(categoryName)) {
+                    listHranenieCategories.add(categoryName);
+                }
+            }
+            //проверяем есть ли недостающие столбцы и добавляем загаловки столбцов с недостающими категориями
+            counter = 0;
+            for (String hranenieCategory: listHranenieCategories) {
+                sum = 0;
+                if (!list.contains(hranenieCategory)) {
+                    sheetReportConverted.getRow(0).createCell(2 + list.size() + counter).setCellValue(hranenieCategory);
+                    sum = initOneCondition(Alphabet.N.ordinal(), hranenieCategory, Alphabet.T.ordinal(), 20,2 + list.size() + counter, sheetHranenie);
+                    for (int j = 1; j <= 19; j++) {
+                        sheetReportConverted.getRow(j).createCell(2 + list.size() + counter).setCellValue("-");
+                    }
+                    sheetReportConverted.getRow(22).createCell(2 + list.size() + counter).setCellValue("-");
+                    sheetReportConverted.getRow(23).createCell(2 + list.size() + counter).setCellValue(-sum);
+                    sheetReportConverted.getRow(24).createCell(2 + list.size() + counter).setCellValue("-");
+                    sheetReportConverted.getRow(25).createCell(2 + list.size() + counter).setCellValue("-");
+                    sheetReportConverted.getRow(26).createCell(2 + list.size() + counter).setCellValue(-sum * 0.07);
+                    sheetReportConverted.getRow(27).createCell(2 + list.size() + counter).setCellValue(-sum * 0.93);
+                    sheetReportConverted.getRow(28).createCell(2 + list.size() + counter).setCellValue("-");
+                    counter++;
+                    listHranenie.add(sum);
+                }
+            }
+            //проверяем, что сумма хранения по категориям сходится с общим хранением
+            double sumListHranenie = 0;
+            for (Double hranenieFromCategory : listHranenie) {
+                sumListHranenie += hranenieFromCategory;
+            }
+            long hranenieInt = Math.round(hranenie);
+            long sumListHranenieInt = Math.round(sumListHranenie);
+            if(hranenieInt - sumListHranenieInt > 1) {
+                System.out.println("Общая сумма хранения не сходится с суммой хранения по категориям");
+            }
+
+
+            //штрафы
+            double shtrafi = initOneCondition(Alphabet.K.ordinal(), "Штраф", Alphabet.AK.ordinal(), 19, 1, sheetReportFromWB);
+            for (int i = 0; i < list.size(); i++) {
+                sheetReportConverted.getRow(19).createCell(Alphabet.C.ordinal() + i).setCellValue("-");
+            }
+
+
+            //платная приемка
+            double paidAcceptance = initSumInColumn(Alphabet.BF.ordinal(), 21, Alphabet.B.ordinal(), sheetReportFromWB);
+            for (int i = 0; i < list.size() + counter; i++) {
+                sheetReportConverted.getRow(21).createCell(2 + i).setCellValue("-");
+            }
+
+            //если штрафы > 0 или платная приемка > 0, то создаем столбец Неизвестно
+            if(shtrafi > 0 || paidAcceptance > 0) {
+                sheetReportConverted.getRow(19).createCell(2 + list.size() + counter).setCellValue(shtrafi);
+                sheetReportConverted.getRow(21).createCell(2 + list.size() + counter).setCellValue(paidAcceptance);
+                sheetReportConverted.getRow(23).createCell(2 + list.size() + counter).setCellValue(-shtrafi -paidAcceptance);
+                sheetReportConverted.getRow(26).createCell(2 + list.size() + counter).setCellValue((-shtrafi - paidAcceptance) * 0.07);
+                sheetReportConverted.getRow(27).createCell(2 + list.size() + counter).setCellValue((-shtrafi - paidAcceptance) * 0.93);
+                sheetReportConverted.getRow(0).createCell(2 + list.size() + counter).setCellValue("Неизвестно");
+                for (int i = 1; i <= 18; i++) {
+                    sheetReportConverted.getRow(i).createCell(2 + list.size() + counter).setCellValue("-");
+                }
+                sheetReportConverted.getRow(20).createCell(2 + list.size() + counter).setCellValue("-");
+                sheetReportConverted.getRow(22).createCell(2 + list.size() + counter).setCellValue("-");
+                sheetReportConverted.getRow(24).createCell(2 + list.size() + counter).setCellValue("-");
+                sheetReportConverted.getRow(25).createCell(2 + list.size() + counter).setCellValue("-");
+                sheetReportConverted.getRow(28).createCell(2 + list.size() + counter).setCellValue("-");
+            }
 
 
             //прочие удержания
-            double prochieUderjania = initSumInColumn(Alphabet.BE.ordinal(), 21, 1, sheetReportFromWB, sheetReportConverted);
-            FileInputStream fileInputStreamProchieUderzhaniya = new FileInputStream(new File(directory + "\\ОтчетРеклама.xlsx"));
-            FileInputStream fileInputStreamNazvaniyaRK = new FileInputStream(new File(directory + "\\ВводныеНазванияРК.xlsx"));
+            double prochieUderjania = initSumInColumn(Alphabet.BE.ordinal(), 22, 1, sheetReportFromWB);
 
-            XSSFWorkbook workbookProchieUderzhaniya = new XSSFWorkbook(fileInputStreamProchieUderzhaniya);
-            XSSFWorkbook workbookNazvaniyaRK = new XSSFWorkbook(fileInputStreamNazvaniyaRK);
 
-            XSSFSheet sheetProchieUderzhaniya = workbookProchieUderzhaniya.getSheetAt(0);
-            XSSFSheet sheetNazvaniyaRK = workbookNazvaniyaRK.getSheetAt(0);
+            ArrayList<Integer> listActualDocuments = getListActualDocumentsRK(sheetReportFromWB, sheetProchieUderzhaniya);
 
-            ArrayList<Integer> listActualDocumentsSums = new ArrayList();
-            int counter = 0;
-            for (Row row: sheetReportFromWB) {
-                if (row.getRowNum() != 0) {
-                    Cell cell = row.getCell(Alphabet.BE.ordinal());
-                    if(cell.getCellType() == CellType.STRING) {
-                        break;
-                    }
-                    sum = 0;
-                    sum = cell.getNumericCellValue();
-                    if (sum != 0)
-                        listActualDocumentsSums.add((int)sum);
-                    counter++;
-                }
-            }
-
-            ArrayList<Integer> listAllDocuments = new ArrayList();
-            for(Row row: sheetProchieUderzhaniya) {
-                if (row.getRowNum() != 0) {
-                    Cell cell = row.getCell(Alphabet.G.ordinal());
-                    if (cell.getCellType() == CellType.STRING) {
-                        break;
-                    }
-                    int docNumber = (int)cell.getNumericCellValue();
-                    if(!listAllDocuments.contains(docNumber)) {
-                        listAllDocuments.add(docNumber);
-                    }
-                }
-            }
-
-            ArrayList<Integer> listAllDocumentsSums = new ArrayList();
-            for (int i = 0; i < listAllDocuments.size(); i++) {
-                sum = 0;
-                for(Row row: sheetProchieUderzhaniya) {
-                    if (row.getRowNum() != 0) {
-                        Cell cellToCheck = row.getCell(Alphabet.G.ordinal());
-                        int docNum = (int)cellToCheck.getNumericCellValue();
-                        if(listAllDocuments.get(i).equals(docNum)) {
-                            Cell cellToSum = row.getCell(Alphabet.F.ordinal());
-                            int rashod = (int)cellToSum.getNumericCellValue();
-                            sum += rashod;
-                        }
-                    }
-                }
-                listAllDocumentsSums.add((int)sum);
-            }
-
-            //получаем список с актуальными номерами документов
-            ArrayList<Integer> listActualDocuments = new ArrayList();
-            for (int i = 0; i < listActualDocumentsSums.size(); i++) {
-                for (int j = 0; j < listAllDocumentsSums.size(); j++) {
-                    if (listActualDocumentsSums.get(i).equals(listAllDocumentsSums.get(j))) {
-                        listActualDocuments.add(listAllDocuments.get(j));
-                    }
-                }
-            }
             //расставляем прочие удержания
-            ArrayList<Double> listProchieUderzhaniya = new ArrayList();
+            ArrayList<Double> listProchieUderzhaniya = new ArrayList<>();
             for (int i = 0; i < list.size(); i++) {
-                ArrayList listRKNames = getListRKNamesForCategory(list.get(i), sheetNazvaniyaRK);
-                sum = initTwoConditionReklama(Alphabet.B.ordinal(), listRKNames, Alphabet.G.ordinal(), listActualDocuments, Alphabet.F.ordinal(), 21, i + 2, sheetProchieUderzhaniya, sheetNazvaniyaRK, sheetReportConverted);
+                ArrayList<String> listRKNames = getListRKNames(list.get(i));
+                sum = initTwoConditionReklama(Alphabet.B.ordinal(), listRKNames, Alphabet.G.ordinal(), listActualDocuments, Alphabet.F.ordinal(), 22, i + 2, sheetProchieUderzhaniya);
                 listProchieUderzhaniya.add(sum);
             }
-
-            fileInputStreamProchieUderzhaniya.close();
-            fileInputStreamNazvaniyaRK.close();
 
 
             //выручка до вычета комиссии на 1 шт.
@@ -344,140 +356,284 @@ public class ExcelConverter {
             }
 
             //приход на счет WB
-            double prihodNaSchetWB = viruchkaPosleVichetaKomissii - logistika - shtrafi - hranenie - prochieUderjania;
-            sheetReportConverted.getRow(22).createCell(1).setCellValue(prihodNaSchetWB);
+            double prihodNaSchetWB = viruchkaPosleVichetaKomissii - logistika - shtrafi - hranenie - paidAcceptance - prochieUderjania;
+            sheetReportConverted.getRow(23).createCell(1).setCellValue(prihodNaSchetWB);
             ArrayList<Double> listPrihodNaSchetWb = new ArrayList<>();
             for (int i = 0; i < list.size(); i++) {
                 sum = 0;
                 sum = listViruchkaPosleVichetaKomissii.get(i) - listLogistika.get(i) - listHranenie.get(i) - listProchieUderzhaniya.get(i);
-                sheetReportConverted.getRow(22).createCell(i + 2).setCellValue(sum);
+                sheetReportConverted.getRow(23).createCell(i + 2).setCellValue(sum);
                 listPrihodNaSchetWb.add(sum);
             }
 
             //налог 7%
             double nalog7Proc = prihodNaSchetWB * 0.07;
-            sheetReportConverted.getRow(25).createCell(1).setCellValue(nalog7Proc);
+            sheetReportConverted.getRow(26).createCell(1).setCellValue(nalog7Proc);
             ArrayList<Double> listNalog7Proc = new ArrayList<>();
             for (int i = 0; i < list.size(); i++) {
                 sum = 0;
                 sum = listPrihodNaSchetWb.get(i) * 0.07;
-                sheetReportConverted.getRow(25).createCell(i + 2).setCellValue(sum);
+                sheetReportConverted.getRow(26).createCell(i + 2).setCellValue(sum);
                 listNalog7Proc.add(sum);
             }
 
             //Себестоимость
             double sebes = 0;
-            for (Row row: sheetReportFromWB) {
-                String serviceType = row.getCell(Alphabet.K.ordinal()).getStringCellValue();
-                if (serviceType.equals("Продажа")) {
-                    String sellersArticle = row.getCell(Alphabet.F.ordinal()).getStringCellValue();
-                    for (Row rowSebes : sheetSebestoimost) {
-                        if (rowSebes.getCell(Alphabet.B.ordinal()).getStringCellValue().equals(sellersArticle)) {
-                            sebes += rowSebes.getCell(Alphabet.C.ordinal()).getNumericCellValue();
+            boolean isSebesoimostExistInVvodnyeSebestoimost = false;
+            ArrayList<String> articlesWithoutSebestoimost = new ArrayList<>();
+            counter = 0;
+            for (Row row : sheetReportFromWB) {
+                counter++;
+                Cell cellToCheck = row.getCell(Alphabet.J.ordinal());
+                if (cellToCheck != null) {
+                    String serviceType = cellToCheck.getStringCellValue();
+                    //если продажа, то добавляем себестоимость
+                    if (serviceType.equals("Продажа")) {
+                        String sellersArticle = row.getCell(Alphabet.F.ordinal()).getStringCellValue();
+                        for (Row rowSebes : sheetSebestoimost) {
+                            if (rowSebes.getCell(Alphabet.B.ordinal()).getStringCellValue().equals(sellersArticle)) {
+                                Cell cell = rowSebes.getCell(Alphabet.C.ordinal());
+                                if (cell == null) {
+                                    System.out.println("Вы где-то не указали себестоимость товара, но артикул продавца есть.");
+                                } else {
+                                    sebes += cell.getNumericCellValue();
+                                }
+                                isSebesoimostExistInVvodnyeSebestoimost = true;
+                            }
                         }
+                        if (!isSebesoimostExistInVvodnyeSebestoimost) {
+                            articlesWithoutSebestoimost.add(sellersArticle);
+                        }
+                        isSebesoimostExistInVvodnyeSebestoimost = false;
+                    }
+                    //если возврат, то отнимаем себестоимость
+                    if (serviceType.equals("Возврат")) {
+                        String sellersArticle = row.getCell(Alphabet.F.ordinal()).getStringCellValue();
+                        for (Row rowSebes : sheetSebestoimost) {
+                            if (rowSebes.getCell(Alphabet.B.ordinal()).getStringCellValue().equals(sellersArticle)) {
+                                Cell cell = rowSebes.getCell(Alphabet.C.ordinal());
+                                if (cell == null) {
+                                    System.out.println("Вы где-то не указали себестоимость товара, но артикул продавца есть.");
+                                } else {
+                                    sebes -= cell.getNumericCellValue();
+                                }
+                                isSebesoimostExistInVvodnyeSebestoimost = true;
+                            }
+                        }
+                        if (!isSebesoimostExistInVvodnyeSebestoimost) {
+                            articlesWithoutSebestoimost.add(sellersArticle);
+                        }
+                        isSebesoimostExistInVvodnyeSebestoimost = false;
                     }
                 }
             }
-            sheetReportConverted.getRow(23).createCell(1).setCellValue(sum);
+            for (String article : articlesWithoutSebestoimost) {
+                System.out.println("Нет данных о себестоимости товара с артикулом продавца или проверьте заглавные и строчные буквы в написании артикула продавца " + article);
+            }
+            sheetReportConverted.getRow(24).createCell(1).setCellValue(sebes);
 
             ArrayList<Double> listSebestoimost = new ArrayList<>();
             for (int i = 0; i < list.size(); i++) {
                 sum = 0;
-                for (Row row: sheetReportFromWB) {
-                    String serviceType = row.getCell(Alphabet.K.ordinal()).getStringCellValue();
-                    if (serviceType.equals("Продажа")){
-                        String category = row.getCell(Alphabet.C.ordinal()).getStringCellValue();
-                        if(category.equals(list.get(i))) {
-                            String sellersArticle = row.getCell(Alphabet.F.ordinal()).getStringCellValue();
-                            for (Row rowSebes : sheetSebestoimost) {
-                                if (rowSebes.getCell(Alphabet.B.ordinal()).getStringCellValue().equals(sellersArticle)) {
-                                    sum += rowSebes.getCell(Alphabet.C.ordinal()).getNumericCellValue();
+                for (Row row : sheetReportFromWB) {
+                    Cell cellToCheck = row.getCell(Alphabet.J.ordinal());
+                    if (cellToCheck != null) {
+                        String serviceType = cellToCheck.getStringCellValue();
+                        //если продажа, то добавляем себестоимость
+                        if (serviceType.equals("Продажа")) {
+                            String category = row.getCell(Alphabet.C.ordinal()).getStringCellValue();
+                            if (category.equals(list.get(i))) {
+                                String sellersArticle = row.getCell(Alphabet.F.ordinal()).getStringCellValue();
+                                for (Row rowSebes : sheetSebestoimost) {
+                                    if (rowSebes.getCell(Alphabet.B.ordinal()).getStringCellValue().equals(sellersArticle)) {
+                                        sum += rowSebes.getCell(Alphabet.C.ordinal()).getNumericCellValue();
+                                    }
                                 }
                             }
                         }
-                    }
-                }
-                sheetReportConverted.getRow(23).createCell(i + 2).setCellValue(sum);
-                listSebestoimost.add(sum);
-            }
-
-
-
-
-            //Фулфилмент
-            double fulfilmentSum = 0;
-            for (Row rowReport : sheetReportFromWB) {
-                String stringCellValue = rowReport.getCell(Alphabet.K.ordinal()).getStringCellValue();
-                if (stringCellValue.equals("Продажа")) {
-                    String sellersArticle = rowReport.getCell(Alphabet.F.ordinal()).getStringCellValue();
-                    for (Row rowSebes : sheetSebestoimost) {
-                        if (rowSebes.getCell(Alphabet.B.ordinal()).getStringCellValue().equals(sellersArticle)) {
-                            fulfilmentSum += rowSebes.getCell(Alphabet.D.ordinal()).getNumericCellValue();
-                        }
-                    }
-                }
-            }
-            sheetReportConverted.getRow(24).createCell(1).setCellValue(fulfilmentSum);
-
-            ArrayList<Double> listFulfilment = new ArrayList<>();
-            for (int i = 0; i < list.size(); i++) {
-                sum = 0;
-                for (Row row: sheetReportFromWB) {
-                    String serviceType = row.getCell(Alphabet.K.ordinal()).getStringCellValue();
-                    if (serviceType.equals("Продажа")){
-                        String category = row.getCell(Alphabet.C.ordinal()).getStringCellValue();
-                        if(category.equals(list.get(i))) {
-                            String sellersArticle = row.getCell(Alphabet.F.ordinal()).getStringCellValue();
-                            for (Row rowSebes : sheetSebestoimost) {
-                                if (rowSebes.getCell(Alphabet.B.ordinal()).getStringCellValue().equals(sellersArticle)) {
-                                    sum += rowSebes.getCell(Alphabet.D.ordinal()).getNumericCellValue();
+                        //если возврат, то отнимаем себестоимость
+                        if (serviceType.equals("Возврат")) {
+                            String category = row.getCell(Alphabet.C.ordinal()).getStringCellValue();
+                            if (category.equals(list.get(i))) {
+                                String sellersArticle = row.getCell(Alphabet.F.ordinal()).getStringCellValue();
+                                for (Row rowSebes : sheetSebestoimost) {
+                                    if (rowSebes.getCell(Alphabet.B.ordinal()).getStringCellValue().equals(sellersArticle)) {
+                                        sum -= rowSebes.getCell(Alphabet.C.ordinal()).getNumericCellValue();
+                                    }
                                 }
                             }
                         }
                     }
                 }
                 sheetReportConverted.getRow(24).createCell(i + 2).setCellValue(sum);
+                listSebestoimost.add(sum);
+            }
+
+
+            //Фулфилмент
+            double fulfilmentSum = 0;
+            for (Row rowReport : sheetReportFromWB) {
+                Cell cellToCheck = rowReport.getCell(Alphabet.J.ordinal());
+                if (cellToCheck != null) {
+                    String stringCellValue = cellToCheck.getStringCellValue();
+                    //если продажа, то прибавляем фулфилмент
+                    if (stringCellValue.equals("Продажа")) {
+                        String sellersArticle = rowReport.getCell(Alphabet.F.ordinal()).getStringCellValue();
+                        for (Row rowSebes : sheetSebestoimost) {
+                            if (rowSebes.getCell(Alphabet.B.ordinal()).getStringCellValue().equals(sellersArticle)) {
+                                fulfilmentSum += rowSebes.getCell(Alphabet.D.ordinal()).getNumericCellValue();
+                            }
+                        }
+                    }
+                    //если возврат, то отнимаем фулфилмент
+                    if (stringCellValue.equals("Возврат")) {
+                        String sellersArticle = rowReport.getCell(Alphabet.F.ordinal()).getStringCellValue();
+                        for (Row rowSebes : sheetSebestoimost) {
+                            if (rowSebes.getCell(Alphabet.B.ordinal()).getStringCellValue().equals(sellersArticle)) {
+                                fulfilmentSum -= rowSebes.getCell(Alphabet.D.ordinal()).getNumericCellValue();
+                            }
+                        }
+                    }
+                }
+            }
+            sheetReportConverted.getRow(25).createCell(1).setCellValue(fulfilmentSum);
+
+            ArrayList<Double> listFulfilment = new ArrayList<>();
+            for (int i = 0; i < list.size(); i++) {
+                sum = 0;
+                for (Row row : sheetReportFromWB) {
+                    Cell cellToCheck = row.getCell(Alphabet.J.ordinal());
+                    if (cellToCheck != null) {
+                        String serviceType = cellToCheck.getStringCellValue();
+                        //если продажа, то прибавляем фулфилмент
+                        if (serviceType.equals("Продажа")) {
+                            String category = row.getCell(Alphabet.C.ordinal()).getStringCellValue();
+                            if (category.equals(list.get(i))) {
+                                String sellersArticle = row.getCell(Alphabet.F.ordinal()).getStringCellValue();
+                                for (Row rowSebes : sheetSebestoimost) {
+                                    if (rowSebes.getCell(Alphabet.B.ordinal()).getStringCellValue().equals(sellersArticle)) {
+                                        sum += rowSebes.getCell(Alphabet.D.ordinal()).getNumericCellValue();
+                                    }
+                                }
+                            }
+                        }
+                        //если возврат, то отнимаем фулфилмент
+                        if (serviceType.equals("Возврат")) {
+                            String category = row.getCell(Alphabet.C.ordinal()).getStringCellValue();
+                            if (category.equals(list.get(i))) {
+                                String sellersArticle = row.getCell(Alphabet.F.ordinal()).getStringCellValue();
+                                for (Row rowSebes : sheetSebestoimost) {
+                                    if (rowSebes.getCell(Alphabet.B.ordinal()).getStringCellValue().equals(sellersArticle)) {
+                                        sum -= rowSebes.getCell(Alphabet.D.ordinal()).getNumericCellValue();
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                sheetReportConverted.getRow(25).createCell(i + 2).setCellValue(sum);
                 listFulfilment.add(sum);
             }
 
             //прибыль на маркетинг
             double pribilNaMarketing = prihodNaSchetWB - sebes - fulfilmentSum - nalog7Proc;
-            sheetReportConverted.getRow(26).createCell(1).setCellValue(pribilNaMarketing);
+            sheetReportConverted.getRow(27).createCell(1).setCellValue(pribilNaMarketing);
             ArrayList<Double> listPribilNaMarketing = new ArrayList<>();
             for (int i = 0; i < list.size(); i++) {
                 sum = listPrihodNaSchetWb.get(i) - listSebestoimost.get(i) - listFulfilment.get(i) - listNalog7Proc.get(i);
-                sheetReportConverted.getRow(26).createCell(i + 2).setCellValue(sum);
+                sheetReportConverted.getRow(27).createCell(i + 2).setCellValue(sum);
                 listPribilNaMarketing.add(sum);
             }
 
             //прибыль на маркетинг на 1 штуку
-            sheetReportConverted.getRow(27).createCell(1).setCellValue(pribilNaMarketing / poluchenyDengiShtuk);
+            sheetReportConverted.getRow(28).createCell(1).setCellValue(pribilNaMarketing / poluchenyDengiShtuk);
             for (int i = 0; i < list.size(); i++) {
                 if (listPolucheniDengiShtuk.get(i) != 0)
                     sum = listPribilNaMarketing.get(i) / listPolucheniDengiShtuk.get(i);
                 else
                     sum = 0;
-                sheetReportConverted.getRow(27).createCell(i + 2).setCellValue(sum);
+                sheetReportConverted.getRow(28).createCell(i + 2).setCellValue(sum);
             }
 
 
-            fillRowGreen(1, sheetReportConverted);
-            fillRowGreen(6, sheetReportConverted);
-            fillRowGreen(10, sheetReportConverted);
-            fillRowGreen(22, sheetReportConverted);
-            fillRowGreen(26, sheetReportConverted);
+            fillRowGreen(1);
+            fillRowGreen(6);
+            fillRowGreen(10);
+            fillRowGreen(23);
+            fillRowGreen(27);
 
             reportConverted.write(fileOutputStream);
             System.out.println("Файл создан");
-            fileOutputStream.close();
-            fileInputStreamReportFromWB.close();
-            fileInputStreamSebestoimost.close();
         } catch (Exception e) {
-            System.out.println(e.toString());
+            System.out.println(e);
         }
     }
 
-    private static void fillRowGreen(int rowNum, XSSFSheet sheetReportConverted) {
+    public static ArrayList<Integer> getListActualDocumentsRK(XSSFSheet sheetReportFromWB, XSSFSheet sheetProchieUderzhaniya) {
+        ArrayList<Integer> listActualDocumentsSums = new ArrayList<>();
+        for (Row row : sheetReportFromWB) {
+            if (row.getRowNum() != 0) {
+                Cell cell = row.getCell(Alphabet.BE.ordinal());
+                if (cell.getCellType() == CellType.STRING) {
+                    break;
+                }
+                sum = 0;
+                sum = cell.getNumericCellValue();
+                if (sum != 0)
+                    listActualDocumentsSums.add((int) sum);
+            }
+        }
+
+        ArrayList<Integer> listAllDocuments = new ArrayList<>();
+        for (Row row : sheetProchieUderzhaniya) {
+            if (row.getRowNum() != 0) {
+                Cell cell = row.getCell(Alphabet.G.ordinal());
+                if (cell.getCellType() == CellType.STRING) {
+                    break;
+                }
+                int docNumber = (int) cell.getNumericCellValue();
+                if (!listAllDocuments.contains(docNumber)) {
+                    listAllDocuments.add(docNumber);
+                }
+            }
+        }
+
+        ArrayList<Integer> listAllDocumentsSums = new ArrayList<>();
+        for (Integer listAllDocument : listAllDocuments) {
+            sum = 0;
+            for (Row row : sheetProchieUderzhaniya) {
+                if (row.getRowNum() != 0) {
+                    Cell cellToCheck = row.getCell(Alphabet.G.ordinal());
+                    int docNum = (int) cellToCheck.getNumericCellValue();
+                    if (listAllDocument.equals(docNum)) {
+                        Cell cellToSum = row.getCell(Alphabet.F.ordinal());
+                        int rashod = (int) cellToSum.getNumericCellValue();
+                        sum += rashod;
+                    }
+                }
+            }
+            listAllDocumentsSums.add((int) sum);
+        }
+
+        //получаем список с актуальными номерами документов
+        ArrayList<Integer> listActualDocuments = new ArrayList<>();
+        for (Integer listActualDocumentsSum : listActualDocumentsSums) {
+            for (int j = 0; j < listAllDocumentsSums.size(); j++) {
+                if (listActualDocumentsSum.equals(listAllDocumentsSums.get(j))) {
+                    listActualDocuments.add(listAllDocuments.get(j));
+                }
+            }
+        }
+
+        //если определилось недостаточное количество actualDocuments, то выводим сообщение об ошибке
+        if(listActualDocuments.size() < listActualDocumentsSums.size()) {
+            System.out.println("Недостаточно данных по рекламе. Выберите более раннюю начальную дату. Проверьте, что конечная дата соответствует дате конца периода отчета или более поздняя.");
+        }
+
+        return listActualDocuments;
+    }
+
+    public static void fillRowGreen(int rowNum) {
         Row row = sheetReportConverted.getRow(rowNum);
         if (row != null) {
             int lastCellNum = row.getLastCellNum();
@@ -489,35 +645,37 @@ public class ExcelConverter {
     }
 
 
-    public static void initFirstColumn(String str, Sheet sheet) {
-        Row row = sheet.createRow(counter);
+    public static void initFirstColumn(String str) {
+        Row row = sheetReportConverted.createRow(counter);
         row.createCell(0).setCellValue(str);
         counter++;
     }
 
-    public static double initOneCondition(int columnToCheck, String condition, int columnToSum, int rowToSet, int columnToSet, Sheet sheetFrom, Sheet sheetReportConverted) {
+    public static double initOneCondition(int columnToCheck, String condition, int columnToSum, int rowToSet, int columnToSet, Sheet sheetFrom) {
         sum = 0;
         for (Row row : sheetFrom) {
             Cell cellToSum = row.getCell(columnToSum);
             Cell cellToChek = row.getCell(columnToCheck);
-            CellType cellToCheckType = cellToChek.getCellType();
-            String stringCellToCheckValue = "";
+            if (cellToChek != null) {
+                CellType cellToCheckType = cellToChek.getCellType();
+                String stringCellToCheckValue;
 
-            if (cellToCheckType == CellType.STRING) {
-                stringCellToCheckValue = cellToChek.getStringCellValue();
-            } else {
-                int intCellToCheckValue = (int) cellToChek.getNumericCellValue();
-                stringCellToCheckValue = intCellToCheckValue + "";
-            }
+                if (cellToCheckType == CellType.STRING) {
+                    stringCellToCheckValue = cellToChek.getStringCellValue();
+                } else {
+                    int intCellToCheckValue = (int) cellToChek.getNumericCellValue();
+                    stringCellToCheckValue = intCellToCheckValue + "";
+                }
 
-            if (stringCellToCheckValue.equals(condition) && cellToSum != null && cellToSum.getCellType() == CellType.NUMERIC) {
-                sum += cellToSum.getNumericCellValue();
-            }
+                if (stringCellToCheckValue.equals(condition) && cellToSum != null && cellToSum.getCellType() == CellType.NUMERIC) {
+                    sum += cellToSum.getNumericCellValue();
+                }
 
-            if (stringCellToCheckValue.equals(condition) && cellToSum != null && cellToSum.getCellType() == CellType.STRING) {
-                String hranenieDot = cellToSum.getStringCellValue();
-                double hranenieDouble = Double.parseDouble(hranenieDot);
-                sum += hranenieDouble;
+                if (stringCellToCheckValue.equals(condition) && cellToSum != null && cellToSum.getCellType() == CellType.STRING) {
+                    String hranenieDot = cellToSum.getStringCellValue();
+                    double hranenieDouble = Double.parseDouble(hranenieDot);
+                    sum += hranenieDouble;
+                }
             }
         }
         Row row = sheetReportConverted.getRow(rowToSet);
@@ -525,16 +683,16 @@ public class ExcelConverter {
         return sum;
     }
 
-    private static double initTwoCondition(int columnToCheck1, String condition1, int columnToCheck2, String condition2, int columnToSum, int rowToSet, int columnToSet, Sheet sheetFrom, Sheet sheetReportConverted) {
+    public static double initTwoCondition(int columnToCheck1, String condition1, int columnToCheck2, String condition2, int columnToSum, int rowToSet, int columnToSet) {
         sum = 0;
-        for (Row row : sheetFrom) {
+        for (Row row : sheetReportFromWB) {
             Cell cellToSum = row.getCell(columnToSum);
 
             Cell cellToCheck1 = row.getCell(columnToCheck1);
             if (cellToCheck1 == null)
                 continue;
             CellType cellToCheck1Type = cellToCheck1.getCellType();
-            String stringCellToCheckValue1 = "";
+            String stringCellToCheckValue1;
             if (cellToCheck1Type == CellType.STRING) {
                 stringCellToCheckValue1 = cellToCheck1.getStringCellValue();
             } else {
@@ -546,7 +704,7 @@ public class ExcelConverter {
             if (cellToCheck2 == null)
                 continue;
             CellType cellToCheck2Type = cellToCheck2.getCellType();
-            String stringCellToCheckValue2 = "";
+            String stringCellToCheckValue2;
             if (cellToCheck2Type == CellType.STRING) {
                 stringCellToCheckValue2 = cellToCheck2.getStringCellValue();
             } else {
@@ -563,7 +721,7 @@ public class ExcelConverter {
         return sum;
     }
 
-    private static double initTwoConditionReklama(int columnRKNames, ArrayList listRKNames, int columnDocNum, ArrayList listDocNum, int columnToSum, int rowToSet, int columnToSet, Sheet sheetFrom, Sheet sheetNazvaniyaRK, Sheet sheetReportConverted) {
+    public static double initTwoConditionReklama(int columnRKNames, ArrayList<String> listRKNames, int columnDocNum, ArrayList<Integer> listDocNum, int columnToSum, int rowToSet, int columnToSet, Sheet sheetFrom) {
         sum = 0;
         for (Row row : sheetFrom) {
             if (row.getRowNum() != 0) {
@@ -573,7 +731,7 @@ public class ExcelConverter {
                 if (cellToCheck1 == null)
                     continue;
                 CellType cellToCheck1Type = cellToCheck1.getCellType();
-                String stringCellToCheckValue1 = "";
+                String stringCellToCheckValue1;
                 if (cellToCheck1Type == CellType.STRING) {
                     stringCellToCheckValue1 = cellToCheck1.getStringCellValue();
                 } else {
@@ -585,12 +743,12 @@ public class ExcelConverter {
                 if (cellToCheck2 == null)
                     continue;
                 CellType cellToCheck2Type = cellToCheck2.getCellType();
-                int intCellToCheckValue2 = 0;
+                int intCellToCheckValue2;
                 if (cellToCheck2Type == CellType.STRING) {
                     String stringCellToCheckValue2 = cellToCheck2.getStringCellValue();
                     intCellToCheckValue2 = Integer.parseInt(stringCellToCheckValue2);
                 } else {
-                    intCellToCheckValue2 = (int)cellToCheck2.getNumericCellValue();
+                    intCellToCheckValue2 = (int) cellToCheck2.getNumericCellValue();
                 }
 
 
@@ -604,9 +762,9 @@ public class ExcelConverter {
     }
 
 
-    private static double initSumInColumn(int columnToSum, int rowToSet, int columnToSet, XSSFSheet sheetReportFromWB, XSSFSheet sheetReportConverted) {
+    public static double initSumInColumn(int columnToSum, int rowToSet, int columnToSet, XSSFSheet sheetFrom) {
         sum = 0;
-        for (Row row : sheetReportFromWB) {
+        for (Row row : sheetFrom) {
             Cell cell = row.getCell(columnToSum);
             if (cell != null && cell.getCellType() == CellType.NUMERIC) {
                 sum += cell.getNumericCellValue();
@@ -616,12 +774,12 @@ public class ExcelConverter {
         return sum;
     }
 
-    private static ArrayList<String> getListRKNamesForCategory(String category, Sheet sheetNazvaniyaRK) {
-        ArrayList list = new ArrayList<>();
-        for(Row row : sheetNazvaniyaRK) {
+    public static ArrayList<String> getListRKNames(String category) {
+        ArrayList<String> list = new ArrayList<>();
+        for (Row row : sheetNazvaniyaRK) {
             Cell cellCategory = row.getCell(Alphabet.B.ordinal());
             String rowCategory = cellCategory.getStringCellValue();
-            if(rowCategory.equals(category)) {
+            if (rowCategory.equals(category)) {
                 Cell cellRKName = row.getCell(Alphabet.A.ordinal());
                 String rkName = cellRKName.getStringCellValue();
                 list.add(rkName);
